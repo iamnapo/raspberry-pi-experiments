@@ -1,15 +1,10 @@
 from signal import pause
-from subprocess import Popen
+from subprocess import run
 
 from gpiozero import Button
 
 button = Button(15)
 
-
-def visitIamNapo():
-    Popen("chromium https://iamnapo.me", shell=True)
-
-
-button.when_pressed = visitIamNapo
+button.when_pressed = lambda: run(["chromium", "https://iamnapo.me"])
 
 pause()
